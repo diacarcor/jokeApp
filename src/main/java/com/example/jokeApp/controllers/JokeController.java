@@ -13,16 +13,13 @@ public class JokeController {
     private final JokeService jokeService;
 
     @Autowired
-    public JokeController(@Qualifier("chuckNorrisJokeImp") JokeService jokeService) {
+    public JokeController(JokeService jokeService) {
         this.jokeService = jokeService;
     }
 
     @RequestMapping (value  = {"/",""})
     public String getAJoke (Model model){
         model.addAttribute("joke",jokeService.getAJoke());
-        System.out.println(jokeService.getAJoke().getText());
         return "chucknorris";
-
-
     }
 }
